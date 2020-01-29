@@ -190,6 +190,8 @@ namespace Microsoft.BotBuilderSamples
             }
             //            await DispatchToTopIntentAsync(turnContext, "l_Weather", recognizerResult, cancellationToken);
             //await DispatchToTopIntentAsync(turnContext, topIntent.intent, recognizerResult, cancellationToken);
+            string strChannels = turnContext.Activity.ChannelId + "******" + turnContext.Activity.Conversation.Id + "******" + turnContext.Activity.From.Id + "******" + turnContext.Activity.Recipient.Id;
+            await turnContext.SendActivityAsync(MessageFactory.Text($"channel data:{strChannels}"), cancellationToken);
         }
 
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
